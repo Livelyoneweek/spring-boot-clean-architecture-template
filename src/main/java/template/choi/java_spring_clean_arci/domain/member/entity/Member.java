@@ -1,0 +1,39 @@
+package template.choi.java_spring_clean_arci.domain.member.entity;
+
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long memberId;
+
+    @Column(nullable = false, unique = true)
+    private String userName;
+
+    @Column(nullable = false)
+    private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "member_roles", joinColumns = @JoinColumn(name = "member_id"))
+    @Column(name = "role")
+    private List<String> roles = new ArrayList<>();
+
+    private String mobile;
+
+    public Member(String userName, String password, List<String> roles,  String mobile) {
+        this.userName = userName;
+        this.password = password;
+        this.roles = roles;
+        this.mobile = mobile;
+    }
+}
