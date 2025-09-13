@@ -65,6 +65,19 @@ src
 -   Spring Security와 JWT를 통한 인증/인가 기본 설정.
 -   예제 엔티티 (`Member`) 및 로그인 기능 포함.
 
+
+🧪 HTTP 테스트
+
+src/test/http 폴더 아래에 API 테스트용 .http 파일이 포함되어 있습니다.
+
+IntelliJ IDEA의 HTTP Client 기능을 이용하여 바로 실행/검증할 수 있습니다.
+
+예:
+login.http: 로그인 및 토큰 발급 테스트
+member-api.http: 회원 CRUD 및 검색 API 테스트
+
+
+
 ## 시작하기 (Getting Started)
 
 ### 빌드
