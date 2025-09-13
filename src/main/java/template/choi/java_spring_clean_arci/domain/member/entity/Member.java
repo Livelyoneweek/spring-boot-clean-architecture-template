@@ -38,4 +38,13 @@ public class Member {
         this.roles = roles;
         this.mobile = mobile;
     }
+
+    public void update(String userName, String mobile) {
+        if(userName != null) {
+            this.userName = userName;
+        }
+        if(mobile != null) {
+            this.mobile = mobile;
+        }
+    }
 }

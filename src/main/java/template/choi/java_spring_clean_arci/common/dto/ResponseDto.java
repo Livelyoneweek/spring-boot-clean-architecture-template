@@ -9,5 +9,9 @@ public record ResponseDto<T>(
     public ResponseDto(ResponseCode responseCode) {
         this(responseCode.getCode(), responseCode.getMessage(), responseCode.isSuccess(), null);
     }
+
+    public ResponseDto(ResponseCode responseCode, T data) {
+        this(responseCode.getCode(), responseCode.getMessage(), responseCode.isSuccess(), data);
+    }
 }
 

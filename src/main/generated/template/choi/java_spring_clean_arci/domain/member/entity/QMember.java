@@ -29,7 +29,7 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath password = createString("password");
 
-    public final ListPath<String, StringPath> roles = this.<String, StringPath>createList("roles", String.class, StringPath.class, PathInits.DIRECT2);
+    public final SetPath<template.choi.java_spring_clean_arci.domain.member.enums.MemberRole, EnumPath<template.choi.java_spring_clean_arci.domain.member.enums.MemberRole>> roles = this.<template.choi.java_spring_clean_arci.domain.member.enums.MemberRole, EnumPath<template.choi.java_spring_clean_arci.domain.member.enums.MemberRole>>createSet("roles", template.choi.java_spring_clean_arci.domain.member.enums.MemberRole.class, EnumPath.class, PathInits.DIRECT2);
 
     public final StringPath userName = createString("userName");
 

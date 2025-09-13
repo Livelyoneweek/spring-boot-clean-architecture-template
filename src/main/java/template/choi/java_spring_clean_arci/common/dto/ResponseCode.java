@@ -5,7 +5,6 @@ import lombok.Getter;
 @Getter
 public enum ResponseCode {
     SUCCESS(true, 200, "Request successful."),
-
     BAD_REQUEST(false, 400, "요청 정보 확인바랍니다."),
     FORBIDDEN(false, 403, "금지되었습니다."),
     UNAUTHORIZED(false, 403, "인증되지 않았습니다..");
