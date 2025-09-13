@@ -47,7 +47,6 @@ public class MemberPersistenceAdapter implements MemberPort {
 
     @Override
     public List<MemberDto.Res.ResMember> getMemberByName(String userName) {
-        log.info("userName = " + userName);
         return memberRepository.searchMemberByName(userName);
     }
 }
