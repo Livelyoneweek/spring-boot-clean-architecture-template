@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import template.choi.java_spring_clean_arci.application.member.dto.MemberDto;
 import template.choi.java_spring_clean_arci.application.member.port.in.MemberUseCase;
@@ -40,13 +41,16 @@ public class MemberController {
         ));
     }
 
-    /** 회원 전체 조회 */
+    /**
+     * 회원 조회
+     */
     @GetMapping
-    public ResponseEntity<ResponseDto<List<MemberDto.Res.ResMember>>> getAll() {
-        List<MemberDto.Res.ResMember> res = memberUseCase.getAllMembers();
+    public ResponseEntity<ResponseDto<List<MemberDto.Res.ResMember>>> getMemberByName(
+            @Validated @ModelAttribute MemberDto.Req.Search search) {
+        List<MemberDto.Res.ResMember> resMembers = memberUseCase.getMemberByName(search.keyword());
         return ResponseEntity.ok(new ResponseDto<>(
                 ResponseCode.SUCCESS,
-                res
+                resMembers
         ));
     }
 
@@ -67,4 +71,5 @@ public class MemberController {
         memberUseCase.deleteMember(memberId);
         return ResponseEntity.ok(new ResponseDto<>(ResponseCode.SUCCESS));
     }
+
 }

@@ -23,6 +23,20 @@ public class QMember extends EntityPathBase<Member> {
 
     public static final QMember member = new QMember("member1");
 
+    public final template.choi.java_spring_clean_arci.common.entity.QBaseEntity _super = new template.choi.java_spring_clean_arci.common.entity.QBaseEntity(this);
+
+    //inherited
+    public final NumberPath<Long> createdBy = _super.createdBy;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
+
+    //inherited
+    public final NumberPath<Long> lastModifiedBy = _super.lastModifiedBy;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
+
     public final NumberPath<Long> memberId = createNumber("memberId", Long.class);
 
     public final StringPath mobile = createString("mobile");

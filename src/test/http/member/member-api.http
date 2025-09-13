@@ -1,5 +1,5 @@
 @host = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTAxMjM0NTY3OCIsImF1dGgiOiJbdGVtcGxhdGUuY2hvaS5qYXZhX3NwcmluZ19jbGVhbl9hcmNpLmluZnJhc3RydWN0dXJlLnNlY3VyaXR5LnByaW5jaXBhbC5QcmluY2lwYWxEZXRhaWxzJCRMYW1iZGEvMHgwMDAwMDI2YTk3ODk5Yjc4QDdhMGViMzVkXSIsImV4cCI6MTc1NzgzNzA5OX0.yoPZiBC36mML--q7s_w_T8tdDqTJfhZokSEMRr0tlLc
+@token = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaG9pIiwiYXV0aCI6IkFETUlOIiwiZXhwIjoxNzU3ODQ4MTkxfQ.qIREkMZSzQwK-Miz0jGGT8oBxwnAoxYAotJ2d2TVRiU
 @memberId = 1
 
 ### 회원 생성
@@ -8,7 +8,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "userName": "user1",
+  "userName": "user2",
   "password": "123456",
   "mobile": "01099998888"
 }
@@ -17,8 +17,9 @@ Authorization: Bearer {{token}}
 GET {{host}}/api/member/v1/{{memberId}}
 Authorization: Bearer {{token}}
 
-### 회원 전체 조회
-GET {{host}}/api/member/v1
+### 회원 검색 조회
+@keyword = user
+GET {{host}}/api/member/v1?keyword={{keyword}}
 Authorization: Bearer {{token}}
 
 ### 회원 수정

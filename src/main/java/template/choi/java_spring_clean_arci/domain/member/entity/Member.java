@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import template.choi.java_spring_clean_arci.common.entity.BaseEntity;
 import template.choi.java_spring_clean_arci.domain.member.enums.MemberRole;
 
 import java.util.HashSet;
@@ -11,8 +12,9 @@ import java.util.Set;
 
 @Entity
 @Getter
+@Table(name = "tb_member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

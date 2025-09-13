@@ -13,7 +13,6 @@ import template.choi.java_spring_clean_arci.domain.member.enums.MemberRole;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -27,12 +26,12 @@ public class MemberService implements MemberUseCase {
     @Override
     public MemberDto.Res.ResMember createMember(MemberDto.Req.Create createMemberDto) {
         log.info("### MemberService.createMember - username: {}, mobile: {}",
-                createMemberDto.getUserName(), createMemberDto.getMobile());
+                createMemberDto.userName(), createMemberDto.mobile());
         Member member = new Member(
-                createMemberDto.getUserName(),
-                passwordEncoder.encode(createMemberDto.getPassword()),
+                createMemberDto.userName(),
+                passwordEncoder.encode(createMemberDto.password()),
                 Set.of(MemberRole.USER),
-                createMemberDto.getMobile()
+                createMemberDto.mobile()
         );
         return MemberDto.Res.ResMember.from(memberPort.save(member));
     }
@@ -49,23 +48,21 @@ public class MemberService implements MemberUseCase {
         return MemberDto.Res.ResMember.from(memberPort.findById(memberId));
     }
 
-    @Transactional(readOnly = true)
-    @Override
-    public List<MemberDto.Res.ResMember> getAllMembers() {
-        return memberPort.findAll().stream()
-                .map(MemberDto.Res.ResMember::from)
-                .collect(Collectors.toList());
-    }
 
     @Override
     public MemberDto.Res.ResMember updateMember(Long memberId, MemberDto.Req.Update updateMemberDto) {
         log.info("### MemberService.updateMember - memberId: {}, newUsername: {}, newMobile: {}",
-                memberId, updateMemberDto.getUserName(), updateMemberDto.getMobile());
+                memberId, updateMemberDto.userName(), updateMemberDto.mobile());
         Member member = memberPort.findById(memberId);
         member.update(
-                updateMemberDto.getUserName(),
-                updateMemberDto.getMobile()
+                updateMemberDto.userName(),
+                updateMemberDto.mobile()
         );
         return MemberDto.Res.ResMember.from(member);
+    }
+
+    @Override
+    public List<MemberDto.Res.ResMember> getMemberByName(String userName) {
+        return memberPort.getMemberByName(userName);
     }
 }

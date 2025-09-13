@@ -16,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import template.choi.java_spring_clean_arci.infrastructure.security.principal.PrincipalDetailsService;
 
 
 @Slf4j
@@ -28,6 +29,7 @@ public class SecurityConfig {
     private final AccessDeniedHandlerCustom accessDeniedHandler;
     private final AuthenticationEntryPointCustom authenticationEntryPointCustom;
     private final JwtTokenProvider jwtTokenProvider;
+    private final PrincipalDetailsService principalDetailsService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -46,7 +48,7 @@ public class SecurityConfig {
                     handler.accessDeniedHandler(accessDeniedHandler);
                     handler.authenticationEntryPoint(authenticationEntryPointCustom);
                 })
-                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, principalDetailsService), UsernamePasswordAuthenticationFilter.class)
         ;
         return http.build();
     }

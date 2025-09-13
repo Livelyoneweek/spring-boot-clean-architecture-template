@@ -1,14 +1,14 @@
 package template.choi.java_spring_clean_arci.infrastructure.security.dto;
 
-import lombok.Getter;
 import template.choi.java_spring_clean_arci.domain.member.entity.Member;
 import template.choi.java_spring_clean_arci.domain.member.enums.MemberRole;
 
-public record LoginMember (@Getter Long memberId,
-                           @Getter String userName,
-                           @Getter String password,
-                           @Getter MemberRole role,
-                           @Getter String mobile) {
+public record LoginMember (Long memberId,
+                           String userName,
+                           String password,
+                           MemberRole role,
+                           String mobile) {
+
 
     public LoginMember(Member member) {
         this(member.getMemberId(), member.getUserName(), member.getPassword(),

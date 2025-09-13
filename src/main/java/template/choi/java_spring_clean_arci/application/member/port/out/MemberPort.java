@@ -1,5 +1,6 @@
 package template.choi.java_spring_clean_arci.application.member.port.out;
 
+import template.choi.java_spring_clean_arci.application.member.dto.MemberDto;
 import template.choi.java_spring_clean_arci.domain.member.entity.Member;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface MemberPort {
     void deleteById(Long memberId);
     Optional<Member> loadMemberByUserName(String userName);
     Member findById(Long memberId);
-    List<Member> findAll();
+    List<MemberDto.Res.ResMember> getMemberByName(String userName);
 }

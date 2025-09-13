@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import template.choi.java_spring_clean_arci.domain.member.entity.Member;
-import template.choi.java_spring_clean_arci.infrastructure.persistence.member.MemberRepository;
+import template.choi.java_spring_clean_arci.infrastructure.persistence.member.jpa.MemberRepository;
 import template.choi.java_spring_clean_arci.infrastructure.security.dto.LoginMember;
 
 @Slf4j
