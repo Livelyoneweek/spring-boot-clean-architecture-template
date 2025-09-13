@@ -4,9 +4,12 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import template.choi.java_spring_clean_arci.infrastructure.security.dto.MemberRole;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,12 +28,13 @@ public class Member {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "member_roles", joinColumns = @JoinColumn(name = "member_id"))
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private List<String> roles = new ArrayList<>();
+    private Set<MemberRole> roles = new HashSet<>();
 
     private String mobile;
 
-    public Member(String userName, String password, List<String> roles,  String mobile) {
+    public Member(String userName, String password, Set<MemberRole> roles,  String mobile) {
         this.userName = userName;
         this.password = password;
         this.roles = roles;
