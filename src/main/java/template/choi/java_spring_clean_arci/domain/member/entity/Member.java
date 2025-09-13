@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import template.choi.java_spring_clean_arci.infrastructure.security.dto.MemberRole;
+import template.choi.java_spring_clean_arci.domain.member.enums.MemberRole;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

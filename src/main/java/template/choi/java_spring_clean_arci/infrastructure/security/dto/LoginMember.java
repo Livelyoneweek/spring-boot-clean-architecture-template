@@ -2,6 +2,7 @@ package template.choi.java_spring_clean_arci.infrastructure.security.dto;
 
 import lombok.Getter;
 import template.choi.java_spring_clean_arci.domain.member.entity.Member;
+import template.choi.java_spring_clean_arci.domain.member.enums.MemberRole;
 
 public record LoginMember (@Getter Long memberId,
                            @Getter String userName,
@@ -9,6 +10,6 @@ public record LoginMember (@Getter Long memberId,
                            @Getter String mobile) {
 
     public LoginMember(Member member) {
-        this(member.getMemberId(),member.getUserName(),MemberRole.USER,member.getMobile());
+        this(member.getMemberId(), member.getUserName(), MemberRole.getTopRole(member.getRoles()), member.getMobile());
     }
 }
