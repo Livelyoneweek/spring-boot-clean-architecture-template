@@ -27,11 +27,35 @@ src
         └── template
             └── choi
                 └── java_spring_clean_arci
-                    ├── domain/           # Domain Layer
-                    ├── application/      # Application Layer
-                    ├── infrastructure/   # Infrastructure Layer
-                    ├── interface/        # Interface Layer (or Presentation)
-                    └── common/           # Common Utilities & Config
+                    ├── domain/                 # Domain Layer (핵심 비즈니스 규칙)
+                    │   ├── member/             # Member 관련 도메인 모델
+                    │   │   ├── entity/         # 순수 도메인 엔티티
+                    │   │   └── enums/          # 도메인 내 공통 Enum 정의
+                    │   └── ...                 
+                    │
+                    ├── application/            # Application Layer (Use Case, 서비스 로직)
+                    │   ├── member/
+                    │   │   ├── dto/            # 요청/응답 DTO 정의
+                    │   │   ├── port/           # Port 정의 (Interface 기반)
+                    │   │   │   ├── in/         # 입력 포트 (UseCase Interface)
+                    │   │   │   └── out/        # 출력 포트 (Repository, 외부 호출 인터페이스)
+                    │   │   └── service/        # UseCase 구현체
+                    │   └── ...
+                    │
+                    ├── infrastructure/         # Infrastructure Layer (구현체, 외부 연동)
+                    │   ├── logging/            # 로깅 설정/모듈
+                    │   ├── persistence/        # DB 연동, JPA Repository 구현체
+                    │   └── security/           # 인증/인가 구현체
+                    │
+                    ├── interfaces/             # Interface Layer (Presentation)
+                    │   └── member/             # REST Controller, API Adapter
+                    │
+                    ├── common/                 # 공통 유틸/설정
+                    │   ├── config/             # Spring 설정 클래스
+                    │   ├── dto/                # 전역 공통 DTO
+                    │   └── entity/             # 전역 공통 Entity
+                    │
+                    └── JavaSpringCleanArciApplication.java  # Spring Boot 메인 실행 클래스
 ```
 
 ### 계층별 설명
